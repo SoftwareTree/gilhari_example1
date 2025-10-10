@@ -1,0 +1,123 @@
+<h1 id="jdx_database-and-jdbc_driver-configuration-in-the-orm-specification-jdx-file">JDX_DATABASE and JDBC_DRIVER Configuration in the ORM specification (.jdx) file</h1>
+<p>This guide provides examples of how to specify the <code>JDX_DATABASE</code> and <code>JDBC_DRIVER</code> statements in the Object Relationa Mapping (ORM) specification <code>.jdx</code> file for different types of databases. Please make sure to substitute the placeholders (e.g., <code>&lt;DatabaseName&gt;</code>, <code>&lt;UserName&gt;</code>, etc.) with your actual database configurations.</p>
+<p>These specifications go at the top of the mapping file before declaring the ORM specifications for the domain model object classes.</p>
+<hr>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#general-instructions">General Instructions</a></li>
+<li><a href="#database-url-formats">Database URL Formats</a></li>
+<li><p><a href="#jdx-configuration-examples">JDX Configuration Examples</a></p>
+<ul>
+<li><a href="#sqlite">SQLite</a></li>
+<li><a href="#mysql">MySQL</a></li>
+<li><a href="#postgresql">PostgreSQL</a></li>
+<li><a href="#microsoft-sql-server">Microsoft SQL Server</a></li>
+<li><a href="#oracle">Oracle</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="general-instructions">General Instructions</h2>
+<ul>
+<li>Replace <code>&lt;DatabaseName&gt;</code>, <code>&lt;UserName&gt;</code>, <code>&lt;Password&gt;</code>, <code>&lt;JDX_DBTYPE&gt;</code>, etc., with your actual database configurations.</li>
+<li>A particular database may require additional properties (e.g., <code>useSSL</code>, <code>integratedSecurity</code>)</li>
+<li>Ensure the appropriate JDBC driver for your database is available in the CLASSPATH.</li>
+<li>You can place the JDBC driver <code>.jar</code> file in the <code>config</code> directory alongside the <code>.jdx</code> mapping file.</li>
+</ul>
+<hr>
+<h2 id="database-url-formats">Database URL Formats</h2>
+<h3 id="localhost">Localhost</h3>
+<p>For databases running locally (e.g., MySQL, PostgreSQL), you can use the following format:</p>
+<pre><code><span class="hljs-symbol">localhost:</span><span class="hljs-params">&lt;PortNumber&gt;</span>
+</code></pre><h3 id="docker-container">Docker Container</h3>
+<p>If your database is outside of a Docker container where your app is running, use one of these formats:</p>
+<pre><code>host.docker.interna<span class="hljs-variable">l:</span><span class="hljs-symbol">&lt;PortNumber&gt;</span>
+<span class="hljs-symbol">&lt;DatabaseServer_IP_Address&gt;</span>:<span class="hljs-symbol">&lt;PortNumber&gt;</span>
+</code></pre><ul>
+<li>In Docker, <code>host.docker.internal</code> allows access to the host machine.</li>
+<li><code>&lt;DatabaseServer_IP_Address&gt;</code> is the absolute IP address of the machine hosting the database server.</li>
+</ul>
+<h3 id="cloud-database-server">Cloud Database Server</h3>
+<p>For databases hosted in the cloud, use the following format:</p>
+<pre><code>&lt;DatabaseServer_Cloud_IP_Address&gt;<span class="hljs-symbol">:&lt;PortNumber&gt;</span>
+</code></pre><h3 id="windows-10-get-ip-address-for-local-database">Windows 10: Get IP Address for Local Database</h3>
+<p>To get the IP address of your machine in Windows 10:</p>
+<ol>
+<li>Open Command Prompt and run: <code>ipconfig /all</code></li>
+<li>Look for the IPv4 Address under the Ethernet adapter (e.g., <code>174.18.38.81</code>).</li>
+</ol>
+<p>Use this address as <code>&lt;DatabaseServer_IP_Address&gt;</code> for local databases.</p>
+<hr>
+<h2 id="jdx-configuration-examples">JDX Configuration Examples</h2>
+<p>Below are examples of how to specify <code>JDX_DATABASE</code> and <code>JDBC_DRIVER</code> for different databases.</p>
+<hr>
+<h3 id="sqlite">SQLite</h3>
+<pre><code class="lang-properties"><span class="hljs-comment">// SQLite (Local Database File)</span>
+JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">sqlite:</span>.<span class="hljs-regexp">/config/</span>&lt;DatabaseFilename&gt;;USER=sa;PASSWORD=sa;JDX_DBTYPE=SQLITE;DEBUG_LEVEL=<span class="hljs-number">5</span>
+JDBC_DRIVER org.sqlite.JDBC
+</code></pre>
+<hr>
+<h3 id="mysql">MySQL</h3>
+<pre><code class="lang-properties"><span class="hljs-comment">// MySQL (Local)</span>
+JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">mysql:</span><span class="hljs-comment">//localhost:3306/&lt;DatabaseName&gt;?useSSL=false;USER=&lt;UserName&gt;;PASSWORD=&lt;Password&gt;;JDX_DBTYPE=MYSQL;DEBUG_LEVEL=5</span>
+
+<span class="hljs-comment">// MySQL (To access from within a Docker Container)</span>
+JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">mysql:</span><span class="hljs-comment">//host.docker.internal:3306/JDXTestDB?useSSL=false;USER=dperiwal;PASSWORD=secretOne;JDX_DBTYPE=MYSQL;DEBUG_LEVEL=5</span>
+
+<span class="hljs-comment">// MySQL (Local or Remote Server)</span>
+JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">mysql:</span><span class="hljs-comment">//&lt;MySQL_IP_Address&gt;:3306/JDXTestDB?useSSL=false;USER=&lt;UserName&gt;;PASSWORD=&lt;Password&gt;;JDX_DBTYPE=MYSQL;DEBUG_LEVEL=5</span>
+
+<span class="hljs-comment">// MySQL JDBC Driver</span>
+JDBC_DRIVER com.mysql.cj.jdbc.Driver
+</code></pre>
+<hr>
+<h3 id="postgresql">PostgreSQL</h3>
+<pre><code class="lang-properties"><span class="hljs-comment">// PostgreSQL (Local)</span>
+JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">postgresql:</span><span class="hljs-comment">//localhost:5432/&lt;DatabaseName&gt;;USER=&lt;UserName&gt;;PASSWORD=&lt;Password&gt;;JDX_DBTYPE=POSTGRES;DEBUG_LEVEL=5</span>
+
+<span class="hljs-comment">// PostgreSQL (To access from within a Docker Container)</span>
+JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">postgresql:</span><span class="hljs-comment">//host.docker.internal:5432/&lt;DatabaseName&gt;;USER=&lt;UserName&gt;;PASSWORD=&lt;Password&gt;;JDX_DBTYPE=POSTGRES;DEBUG_LEVEL=5</span>
+
+<span class="hljs-comment">// PostgreSQL (Local or Remote Server)</span>
+JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">postgresql:</span><span class="hljs-comment">//&lt;Postgresql_IP_Address&gt;:5432/&lt;DatabaseName&gt;;USER=&lt;UserName&gt;;PASSWORD=&lt;Password&gt;;JDX_DBTYPE=POSTGRES;DEBUG_LEVEL=5</span>
+
+<span class="hljs-comment">// PostgreSQL (Cloud Example: Supabase)</span>
+JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">postgresql:</span><span class="hljs-comment">//db.lxbznecvjwlzdtpckxyz.supabase.co:5432/postgres?user=postgres&amp;password=DPSupaPost_SQL;JDX_DBTYPE=POSTGRES;DEBUG_LEVEL=5</span>
+
+<span class="hljs-comment">// PostgreSQL JDBC Driver</span>
+JDBC_DRIVER org.postgresql.Driver
+</code></pre>
+<hr>
+<h3 id="microsoft-sql-server">Microsoft SQL Server</h3>
+<pre><code class="lang-properties"><span class="hljs-comment">// SQL Server (Local)</span>
+JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">sqlserver:</span><span class="hljs-comment">//localhost:1433;database=&lt;DatabaseName&gt;;USER=&lt;UserName&gt;;PASSWORD=&lt;Password&gt;;JDX_DBTYPE=MSSQL;DEBUG_LEVEL=5</span>
+
+<span class="hljs-comment">// SQL Server (Windows Integrated Security)</span>
+JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">sqlserver:</span><span class="hljs-comment">//localhost;database=&lt;DatabaseName&gt;;integratedSecurity=true;JDX_DBTYPE=MSSQL;DEBUG_LEVEL=5</span>
+
+<span class="hljs-comment">// SQL Server (To access from within a Docker Container)</span>
+JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">sqlserver:</span><span class="hljs-comment">//host.docker.internal:1433;database=&lt;DatabaseName&gt;;USER=&lt;UserName&gt;;PASSWORD=&lt;Password&gt;;JDX_DBTYPE=MSSQL;DEBUG_LEVEL=5</span>
+
+<span class="hljs-comment">// SQL Server JDBC Driver</span>
+JDBC_DRIVER com.microsoft.sqlserver.jdbc.SQLServerDriver
+</code></pre>
+<hr>
+<h3 id="oracle">Oracle</h3>
+<p>In the URL below, <code>hostname</code> refers to the name or IP address of the machine where the Oracle database server is running. <code>sid</code> (System Identifier) refers to a unique name that identifies a specific Oracle database instance running on a particular host. <code>port</code> is typically 1521.</p>
+<pre><code class="lang-properties"><span class="hljs-comment">// Oracle (Local)</span>
+JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">oracle:</span><span class="hljs-string">thin:</span>@&lt;hostname&gt;:&lt;port&gt;:&lt;sid&gt;;USER=&lt;UserName&gt;;PASSWORD=&lt;Password&gt;;JDX_DBTYPE=Oracle;DEBUG_LEVEL=<span class="hljs-number">5</span>
+
+<span class="hljs-comment">// Oracle (To access from within a Docker Container)</span>
+JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">oracle:</span><span class="hljs-string">thin:</span><span class="hljs-comment">//host.docker.internal:&lt;port&gt;:&lt;sid&gt;;USER=&lt;UserName&gt;;PASSWORD=&lt;Password&gt;;JDX_DBTYPE=Oracle;DEBUG_LEVEL=5</span>
+
+<span class="hljs-comment">// Oracle JDBC Driver</span>
+JDBC_DRIVER oracle.jdbc.driver.OracleDriver
+</code></pre>
+<hr>
+<h2 id="notes-">Notes:</h2>
+<ul>
+<li>Ensure the correct JDBC driver is added to the classpath for your database type.</li>
+<li>Always verify that the database connection details (username, password, database name, IP address, port) are correctly specified.</li>
+</ul>
+<hr>
+<p>By following this guide, you should be able to set up the appropriate JDBC connection strings for your database setup.</p>
