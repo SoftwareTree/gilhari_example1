@@ -3,7 +3,7 @@
 # (gilhari) that already has jdxnode_rest_server installed
 # and the appropriate environment varaibles (JX_HOME, NODE_PATH) set.
 
-FROM dperiwal/st_repo:gilhari
+FROM softwaretree/gilhari
 #FROM gilhari:0.8
 WORKDIR /opt/gilhari_example1
 
