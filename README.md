@@ -1,5 +1,7 @@
 > **Note:** This file is written in Markdown and is best viewed with a Markdown viewer (e.g., GitHub, GitLab, VS Code, or a dedicated Markdown reader). Viewing it in a plain text editor may not render the formatting as intended.
 
+Copyright (c) 2025 Software Tree
+
 # Gilhari Example1
 
 > **Basic example demonstrating RESTful CRUD operations for JSON objects with Gilhari ORM**
@@ -17,7 +19,7 @@ The example uses the base Gilhari docker image (softwaretree/gilhari) to easily 
 This example can be used **standalone as a RESTful microservice** or with the **ORMCP Server** for AI-powered database interactions. This example is particularly useful for getting started with ORMCP.
 
 **Related:**
-- Main ORMCP Server: [https://github.com/SoftwareTree/ormcp-server](https://github.com/SoftwareTree/ormcp-server) - Uses this example as a reference implementation
+- Main ORMCP Server: <TODO> - Uses this example as a reference implementation
 
 **Note:** This example is included in both the Gilhari SDK distribution and the ORMCP Server package. 
 - **If you have the Gilhari SDK installed**, you can use it directly from the `examples/gilhari_example1` directory
@@ -364,7 +366,7 @@ The ORMCP Server uses this example as a reference implementation and can automat
 - "Add a new user named Alice aged 35 in Boston, MA"
 - "Delete all users older than 50"
 
-For more information on ORMCP Server, visit: [https://github.com/SoftwareTree/ormcp-server](https://github.com/SoftwareTree/ormcp-server)
+For more information on ORMCP Server, visit: TODO
 
 ## Development Tools
 
@@ -392,7 +394,7 @@ docker stop <container-id>
 
 - **JDX User Manual**: "Persisting JSON Objects" section for detailed ORM specification documentation
 - **Gilhari SDK Documentation**: The SDK available for download at [https://softwaretree.com](https://softwaretree.com)
-- **ORMCP Server**: Main repository at [https://github.com/SoftwareTree/ormcp-server](https://github.com/SoftwareTree/ormcp-server)
+- **ORMCP Server**: TODO
 - **Database Configuration Guide**: See `JDX_DATABASE_JDBC_DRIVER_Specification_Guide.md`
 - **operationDetails Documentation**: See `operationDetails_doc.md` for GraphQL-like query capabilities
 
@@ -430,13 +432,17 @@ chmod +x *.sh
 ## Support
 
 For issues or questions:
-- **ORMCP Server issues**: [https://github.com/SoftwareTree/ormcp-server/issues](https://github.com/SoftwareTree/ormcp-server/issues)
+- **ORMCP Server issues**: TODO
 - **This example**: [https://github.com/SoftwareTree/gilhari_example1/issues](https://github.com/SoftwareTree/gilhari_example1/issues)
 - **Gilhari SDK**: Contact support at [gilhari_support@softwaretree.com](mailto:gilhari_support@softwaretree.com)
 
 ## License
 
-[Include your license information here]
+This example code is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+**Important:** This license applies ONLY to the example code in this repository. The Gilhari software (including the softwaretree/gilhari Docker image and Gilhari SDK) and the embedded JDX ORM software are proprietary products owned by Software Tree.
+
+The Gilhari Docker image includes an evaluation license for testing purposes. For production use or licensing beyond the evaluation period, please visit [https://www.softwaretree.com](https://www.softwaretree.com) or contact [gilhari_support@softwaretree.com](mailto:gilhari_support@softwaretree.com).
 
 ---
 
