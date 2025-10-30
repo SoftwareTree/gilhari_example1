@@ -19,7 +19,8 @@ The example uses the base Gilhari docker image (softwaretree/gilhari) to easily 
 This example can be used **standalone as a RESTful microservice** or with the **ORMCP Server** for AI-powered database interactions. This example is particularly useful for getting started with ORMCP.
 
 **Related:**
-- Main ORMCP Server: <TODO> - Uses this example as a reference implementation
+- **ORMCP Documentation**: [https://github.com/softwaretree/ormcp-docs](https://github.com/softwaretree/ormcp-docs) - Uses this example as a reference implementation
+- **ORMCP/Gilhari Examples**: [https://github.com/softwaretree/ormcp-docs#examples](https://github.com/softwaretree/ormcp-docs#examples) - Comprehensive list of examples
 
 **Note:** This example is included in both the Gilhari SDK distribution and the ORMCP Server package. 
 - **If you have the Gilhari SDK installed**, you can use it directly from the `examples/gilhari_example1` directory
@@ -366,7 +367,10 @@ The ORMCP Server uses this example as a reference implementation and can automat
 - "Add a new user named Alice aged 35 in Boston, MA"
 - "Delete all users older than 50"
 
-For more information on ORMCP Server, visit: TODO
+For more information on ORMCP Server:
+- **ORMCP Documentation**: [https://github.com/softwaretree/ormcp-docs](https://github.com/softwaretree/ormcp-docs)
+- **ORMCP/Gilhari Examples**: [https://github.com/softwaretree/ormcp-docs#examples](https://github.com/softwaretree/ormcp-docs#examples)
+- **Product Website**: [https://www.softwaretree.com/products/ormcp/](https://www.softwaretree.com/products/ormcp/)
 
 ## Development Tools
 
@@ -394,7 +398,7 @@ docker stop <container-id>
 
 - **JDX User Manual**: "Persisting JSON Objects" section for detailed ORM specification documentation
 - **Gilhari SDK Documentation**: The SDK available for download at [https://softwaretree.com](https://softwaretree.com)
-- **ORMCP Server**: TODO
+- **ORMCP Documentation**: [https://github.com/softwaretree/ormcp-docs](https://github.com/softwaretree/ormcp-docs)
 - **Database Configuration Guide**: See `JDX_DATABASE_JDBC_DRIVER_Specification_Guide.md`
 - **operationDetails Documentation**: See `operationDetails_doc.md` for GraphQL-like query capabilities
 
@@ -432,7 +436,7 @@ chmod +x *.sh
 ## Support
 
 For issues or questions:
-- **ORMCP Server issues**: TODO
+- **ORMCP Documentation & Issues**: [https://github.com/softwaretree/ormcp-docs/issues](https://github.com/softwaretree/ormcp-docs/issues)
 - **This example**: [https://github.com/SoftwareTree/gilhari_example1/issues](https://github.com/SoftwareTree/gilhari_example1/issues)
 - **Gilhari SDK**: Contact support at [gilhari_support@softwaretree.com](mailto:gilhari_support@softwaretree.com)
 
