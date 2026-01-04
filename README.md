@@ -144,10 +144,13 @@ The `gilhari_service.config` file specifies runtime parameters for the RESTful G
 ## Quick Start
 
 ### For Quick Evaluation (No SDK Required)
+
+**IMPORTANT:** Docker is required for building and running a Gilhari microservice — **[Get Docker](https://docs.docker.com/get-docker/)** if not already installed on your machine
+
 If you just want to see this example in action without modifications:
 
 1. **Clone this repository** (pre-compiled classes included)
-2. **Install Docker**
+2. **Install Docker** (skip, if already installed)
 3. **Build and run** (skip compilation step)
 
 ### For Development and Customization
