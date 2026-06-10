@@ -1,8 +1,6 @@
 REM Compile java source files with JDK 1.8 compatibility
 REM Set JX_HOME to the root directory of Gilhari installation.
-if not exist bin mkdir bin
 REM set JX_HOME=..\..
-if not exist bin mkdir bin
 set JX_HOME=C:\Users\Damodar\workspace3\JDXNode\dev\Gilhari
 if not exist bin mkdir bin
 
