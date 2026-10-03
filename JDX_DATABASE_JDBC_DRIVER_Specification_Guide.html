@@ -1,5 +1,5 @@
 <h1 id="jdx_database-and-jdbc_driver-configuration-in-the-orm-specification-jdx-file">JDX_DATABASE and JDBC_DRIVER Configuration in the ORM specification (.jdx) file</h1>
-<p>This guide provides examples of how to specify the <code>JDX_DATABASE</code> and <code>JDBC_DRIVER</code> statements in the Object Relationa Mapping (ORM) specification <code>.jdx</code> file for different types of databases. Please make sure to substitute the placeholders (e.g., <code>&lt;DatabaseName&gt;</code>, <code>&lt;UserName&gt;</code>, etc.) with your actual database configurations.</p>
+<p>This guide provides examples of how to specify the <code>JDX_DATABASE</code> and <code>JDBC_DRIVER</code> statements in the Object Relational Mapping (ORM) specification <code>.jdx</code> file for different types of databases. Please make sure to substitute the placeholders (e.g., <code>&lt;DatabaseName&gt;</code>, <code>&lt;UserName&gt;</code>, etc.) with your actual database configurations.</p>
 <p>These specifications go at the top of the mapping file before declaring the ORM specifications for the domain model object classes.</p>
 <hr>
 <h2 id="table-of-contents">Table of Contents</h2>
@@ -40,8 +40,8 @@
 <h3 id="cloud-database-server">Cloud Database Server</h3>
 <p>For databases hosted in the cloud, use the following format:</p>
 <pre><code>&lt;DatabaseServer_Cloud_IP_Address&gt;<span class="hljs-symbol">:&lt;PortNumber&gt;</span>
-</code></pre><h3 id="windows-10-get-ip-address-for-local-database">Windows 10: Get IP Address for Local Database</h3>
-<p>To get the IP address of your machine in Windows 10:</p>
+</code></pre><h3 id="windows-get-ip-address-for-local-database">Windows: Get IP Address for Local Database</h3>
+<p>To get the IP address of your machine in Windows:</p>
 <ol>
 <li>Open Command Prompt and run: <code>ipconfig /all</code></li>
 <li>Look for the IPv4 Address under the Ethernet adapter (e.g., <code>174.18.38.81</code>).</li>
@@ -62,10 +62,10 @@ JDBC_DRIVER org.sqlite.JDBC
 JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">mysql:</span><span class="hljs-comment">//localhost:3306/&lt;DatabaseName&gt;?useSSL=false;USER=&lt;UserName&gt;;PASSWORD=&lt;Password&gt;;JDX_DBTYPE=MYSQL;DEBUG_LEVEL=5</span>
 
 <span class="hljs-comment">// MySQL (To access from within a Docker Container)</span>
-JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">mysql:</span><span class="hljs-comment">//host.docker.internal:3306/JDXTestDB?useSSL=false;USER=dperiwal;PASSWORD=secretOne;JDX_DBTYPE=MYSQL;DEBUG_LEVEL=5</span>
+JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">mysql:</span><span class="hljs-comment">//host.docker.internal:3306/&lt;DatabaseName&gt;?useSSL=false;USER=&lt;UserName&gt;;PASSWORD=&lt;Password&gt;;JDX_DBTYPE=MYSQL;DEBUG_LEVEL=5</span>
 
 <span class="hljs-comment">// MySQL (Local or Remote Server)</span>
-JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">mysql:</span><span class="hljs-comment">//&lt;MySQL_IP_Address&gt;:3306/JDXTestDB?useSSL=false;USER=&lt;UserName&gt;;PASSWORD=&lt;Password&gt;;JDX_DBTYPE=MYSQL;DEBUG_LEVEL=5</span>
+JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">mysql:</span><span class="hljs-comment">//&lt;MySQL_IP_Address&gt;:3306/&lt;DatabaseName&gt;?useSSL=false;USER=&lt;UserName&gt;;PASSWORD=&lt;Password&gt;;JDX_DBTYPE=MYSQL;DEBUG_LEVEL=5</span>
 
 <span class="hljs-comment">// MySQL JDBC Driver</span>
 JDBC_DRIVER com.mysql.cj.jdbc.Driver
@@ -81,8 +81,8 @@ JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc
 <span class="hljs-comment">// PostgreSQL (Local or Remote Server)</span>
 JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">postgresql:</span><span class="hljs-comment">//&lt;Postgresql_IP_Address&gt;:5432/&lt;DatabaseName&gt;;USER=&lt;UserName&gt;;PASSWORD=&lt;Password&gt;;JDX_DBTYPE=POSTGRES;DEBUG_LEVEL=5</span>
 
-<span class="hljs-comment">// PostgreSQL (Cloud Example: Supabase)</span>
-JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">postgresql:</span><span class="hljs-comment">//db.lxbznecvjwlzdtpckxyz.supabase.co:5432/postgres?user=postgres&amp;password=DPSupaPost_SQL;JDX_DBTYPE=POSTGRES;DEBUG_LEVEL=5</span>
+<span class="hljs-comment">// PostgreSQL (Cloud Example: Supabase; credentials as URL parameters)</span>
+JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">postgresql:</span><span class="hljs-comment">//db.&lt;project-ref&gt;.supabase.co:5432/postgres?user=&lt;UserName&gt;&amp;password=&lt;Password&gt;;JDX_DBTYPE=POSTGRES;DEBUG_LEVEL=5</span>
 
 <span class="hljs-comment">// PostgreSQL JDBC Driver</span>
 JDBC_DRIVER org.postgresql.Driver
@@ -108,7 +108,7 @@ JDBC_DRIVER com.microsoft.sqlserver.jdbc.SQLServerDriver
 JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">oracle:</span><span class="hljs-string">thin:</span>@&lt;hostname&gt;:&lt;port&gt;:&lt;sid&gt;;USER=&lt;UserName&gt;;PASSWORD=&lt;Password&gt;;JDX_DBTYPE=Oracle;DEBUG_LEVEL=<span class="hljs-number">5</span>
 
 <span class="hljs-comment">// Oracle (To access from within a Docker Container)</span>
-JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">oracle:</span><span class="hljs-string">thin:</span><span class="hljs-comment">//host.docker.internal:&lt;port&gt;:&lt;sid&gt;;USER=&lt;UserName&gt;;PASSWORD=&lt;Password&gt;;JDX_DBTYPE=Oracle;DEBUG_LEVEL=5</span>
+JDX_DATABASE <span class="hljs-string">JDX:</span><span class="hljs-string">jdbc:</span><span class="hljs-string">oracle:</span><span class="hljs-string">thin:</span>@host.docker.internal:&lt;port&gt;:&lt;sid&gt;;USER=&lt;UserName&gt;;PASSWORD=&lt;Password&gt;;JDX_DBTYPE=Oracle;DEBUG_LEVEL=<span class="hljs-number">5</span>
 
 <span class="hljs-comment">// Oracle JDBC Driver</span>
 JDBC_DRIVER oracle.jdbc.driver.OracleDriver
@@ -118,6 +118,8 @@ JDBC_DRIVER oracle.jdbc.driver.OracleDriver
 <ul>
 <li>Ensure the correct JDBC driver is added to the classpath for your database type.</li>
 <li>Always verify that the database connection details (username, password, database name, IP address, port) are correctly specified.</li>
+<li><strong>Credentials in Docker images:</strong> the <code>.jdx</code> file is added to the Gilhari Docker image, so <code>USER</code>/<code>PASSWORD</code> in it can be read by anyone who can pull the image. Gilhari can take them from the environment variables <code>JDX_DB_USER</code>/<code>JDX_DB_PASSWORD</code> at container start instead, which take precedence over the <code>.jdx</code> values &mdash; see <a href="https://github.com/SoftwareTree/ormcp-docs/blob/main/guides/gilhari_setup.md#database-credentials">Database Credentials</a>.</li>
+<li>Don&#39;t put real credentials in examples or files you share; use placeholders like the ones above.</li>
 </ul>
 <hr>
 <p>By following this guide, you should be able to set up the appropriate JDBC connection strings for your database setup.</p>
